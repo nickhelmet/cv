@@ -163,7 +163,7 @@ const CV = {
   // --- Skills agrupadas ---
   skills: {
     es: [
-      { group: "Cloud", items: ["GCP", "AWS", "Azure", "DigitalOcean"] },
+      { group: "Cloud", items: ["GCP", "AWS", "Azure", "Oracle Cloud", "IBM Cloud", "Alibaba Cloud", "DigitalOcean", "Equinix"] },
       { group: "IaC / Automatización", items: ["Terraform", "Ansible"] },
       { group: "Contenedores / Orquestación", items: ["Docker", "Kubernetes", "Docker Swarm", "Proxmox", "VMware"] },
       { group: "Observabilidad", items: ["Grafana", "Prometheus", "Alertas (Slack)"] },
@@ -172,7 +172,7 @@ const CV = {
       { group: "Sistemas Operativos", items: ["Linux (Ubuntu/Debian/CentOS)"] },
     ],
     en: [
-      { group: "Cloud", items: ["GCP", "AWS", "Azure", "DigitalOcean"] },
+      { group: "Cloud", items: ["GCP", "AWS", "Azure", "Oracle Cloud", "IBM Cloud", "Alibaba Cloud", "DigitalOcean", "Equinix"] },
       { group: "IaC / Automation", items: ["Terraform", "Ansible"] },
       { group: "Containers / Orchestration", items: ["Docker", "Kubernetes", "Docker Swarm", "Proxmox", "VMware"] },
       { group: "Observability", items: ["Grafana", "Prometheus", "Alerting (Slack)"] },
