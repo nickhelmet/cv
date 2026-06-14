@@ -191,8 +191,17 @@ const CV = {
     },
   ],
 
-  // --- Formación / becas ---
+  // --- Certificaciones ---
   certifications: [
+    {
+      title: { es: "AWS Certified Cloud Practitioner", en: "AWS Certified Cloud Practitioner" },
+      org: { es: "Amazon Web Services (AWS)", en: "Amazon Web Services (AWS)" },
+      period: { es: "2021", en: "2021" },
+    },
+  ],
+
+  // --- Becas ---
+  scholarships: [
     {
       title: { es: "Beca de Entrenamiento en Ciberseguridad", en: "Cybersecurity Training Scholarship" },
       org: { es: "Seúl, Corea del Sur (programa Argentina–Corea del Sur)", en: "Seoul, South Korea (Argentina–South Korea program)" },

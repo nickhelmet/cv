@@ -8,7 +8,8 @@ const UI = {
   experience:     { es: "Experiencia",     en: "Experience" },
   skills:         { es: "Tecnologías",     en: "Skills" },
   education:      { es: "Educación",       en: "Education" },
-  certifications: { es: "Becas",           en: "Scholarships" },
+  certifications: { es: "Certificaciones", en: "Certifications" },
+  scholarships:   { es: "Becas",           en: "Scholarships" },
   languages:      { es: "Idiomas",         en: "Languages" },
   current:        { es: "Actual",          en: "Current" },
   print:          { es: "Imprimir",        en: "Print" },
@@ -226,16 +227,25 @@ function sectionTwoCol() {
   eduCol.appendChild(langSec);
 
   const certCol = el("div", "col");
+
+  const renderItems = (parent, arr) => {
+    arr.forEach((c) => {
+      const item = el("div", "compact-item");
+      item.innerHTML =
+        `<div class="compact-title">${t(c.title)}</div>` +
+        `<div class="compact-meta">${t(c.org)} · ${t(c.period)}</div>` +
+        (c.detail ? `<div class="compact-detail">${t(c.detail)}</div>` : "");
+      parent.appendChild(item);
+    });
+  };
+
   const certSec = section("certifications", UI.certifications[lang]);
-  CV.certifications.forEach((c) => {
-    const item = el("div", "compact-item");
-    item.innerHTML =
-      `<div class="compact-title">${t(c.title)}</div>` +
-      `<div class="compact-meta">${t(c.org)} · ${t(c.period)}</div>` +
-      (c.detail ? `<div class="compact-detail">${t(c.detail)}</div>` : "");
-    certSec.appendChild(item);
-  });
+  renderItems(certSec, CV.certifications);
   certCol.appendChild(certSec);
+
+  const schSec = section("scholarships", UI.scholarships[lang]);
+  renderItems(schSec, CV.scholarships);
+  certCol.appendChild(schSec);
 
   wrap.appendChild(eduCol);
   wrap.appendChild(certCol);
