@@ -8,7 +8,7 @@ const UI = {
   experience:     { es: "Experiencia",     en: "Experience" },
   skills:         { es: "Tecnologías",     en: "Skills" },
   education:      { es: "Educación",       en: "Education" },
-  certifications: { es: "Formación",       en: "Training" },
+  certifications: { es: "Becas",           en: "Scholarships" },
   languages:      { es: "Idiomas",         en: "Languages" },
   current:        { es: "Actual",          en: "Current" },
   print:          { es: "Imprimir",        en: "Print" },
