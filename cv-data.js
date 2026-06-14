@@ -164,8 +164,8 @@ const CV = {
   skills: {
     es: [
       { group: "Cloud", items: ["GCP", "AWS", "Azure", "Oracle Cloud", "IBM Cloud", "Alibaba Cloud", "DigitalOcean", "Equinix"] },
-      { group: "IaC / Automatización", items: ["Terraform", "Ansible"] },
-      { group: "Contenedores / Orquestación", items: ["Docker", "Kubernetes", "Docker Swarm", "Proxmox", "VMware"] },
+      { group: "IaC / Automatización", items: ["Terraform", "OpenTofu", "Terragrunt", "Ansible"] },
+      { group: "Contenedores / Orquestación", items: ["Docker", "Kubernetes", "Proxmox", "VMware"] },
       { group: "Observabilidad", items: ["Grafana", "Prometheus", "Alertas (Slack)"] },
       { group: "Seguridad", items: ["Hardening Linux", "Pentesting", "IDS/IPS", "VPN", "Escaneo de vulnerabilidades"] },
       { group: "Redes", items: ["Cisco", "HP", "Huawei", "Mikrotik"] },
@@ -173,8 +173,8 @@ const CV = {
     ],
     en: [
       { group: "Cloud", items: ["GCP", "AWS", "Azure", "Oracle Cloud", "IBM Cloud", "Alibaba Cloud", "DigitalOcean", "Equinix"] },
-      { group: "IaC / Automation", items: ["Terraform", "Ansible"] },
-      { group: "Containers / Orchestration", items: ["Docker", "Kubernetes", "Docker Swarm", "Proxmox", "VMware"] },
+      { group: "IaC / Automation", items: ["Terraform", "OpenTofu", "Terragrunt", "Ansible"] },
+      { group: "Containers / Orchestration", items: ["Docker", "Kubernetes", "Proxmox", "VMware"] },
       { group: "Observability", items: ["Grafana", "Prometheus", "Alerting (Slack)"] },
       { group: "Security", items: ["Linux hardening", "Pentesting", "IDS/IPS", "VPN", "Vulnerability scanning"] },
       { group: "Networking", items: ["Cisco", "HP", "Huawei", "Mikrotik"] },
