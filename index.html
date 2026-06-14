@@ -7,6 +7,19 @@
   <meta name="description" content="CV de Nicolás Rodrigo Casco — Senior Infrastructure Engineer. Cloud, IaC, automatización, contenedores y seguridad." />
   <meta name="author" content="Nicolás Rodrigo Casco" />
 
+  <!-- Aplica el tema antes del primer pintado para evitar parpadeo -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("cv-theme");
+        if (t !== "light" && t !== "dark") {
+          t = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+
   <!-- Open Graph -->
   <meta property="og:title" content="Nicolás Casco — Senior Infrastructure Engineer" />
   <meta property="og:description" content="Cloud infrastructure, automation (IaC/CaC) and systems reliability. 10+ years across networking, security and SRE." />
@@ -24,7 +37,9 @@
     <div class="topbar-inner">
       <span class="brand">NC</span>
       <div class="topbar-actions">
-        <button id="print-btn" class="ghost-btn no-print">Imprimir / PDF</button>
+        <button id="theme-btn" class="icon-btn no-print" aria-label="Toggle theme" title="Tema claro/oscuro"></button>
+        <button id="download-btn" class="ghost-btn no-print">Descargar PDF</button>
+        <button id="print-btn" class="ghost-btn no-print">Imprimir</button>
         <div class="lang-switch no-print" role="group" aria-label="Language">
           <button class="lang-btn" data-lang="es">ES</button>
           <button class="lang-btn" data-lang="en">EN</button>
@@ -33,19 +48,22 @@
     </div>
   </div>
 
-  <!-- Encabezado -->
-  <header class="hero">
-    <div class="hero-inner">
-      <h1 id="name">Nicolás Rodrigo Casco</h1>
-      <p id="title" class="hero-title"></p>
-      <p id="tagline" class="hero-tagline"></p>
-      <p id="location" class="hero-location"></p>
-      <nav id="links" class="links"></nav>
-    </div>
-  </header>
+  <!-- Raíz exportable a PDF (encabezado + contenido) -->
+  <div id="cv-root">
+    <!-- Encabezado -->
+    <header class="hero">
+      <div class="hero-inner">
+        <h1 id="name">Nicolás Rodrigo Casco</h1>
+        <p id="title" class="hero-title"></p>
+        <p id="tagline" class="hero-tagline"></p>
+        <p id="location" class="hero-location"></p>
+        <nav id="links" class="links"></nav>
+      </div>
+    </header>
 
-  <!-- Contenido (renderizado por JS) -->
-  <main id="content" class="container"></main>
+    <!-- Contenido (renderizado por JS) -->
+    <main id="content" class="container"></main>
+  </div>
 
   <footer class="footer">
     <div class="container">
@@ -54,6 +72,7 @@
   </footer>
 
   <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js" defer></script>
   <script src="cv-data.js"></script>
   <script src="app.js"></script>
 </body>

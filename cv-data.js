@@ -53,7 +53,7 @@ const CV = {
       url: "https://telnyx.com",
       current: true,
       role: { es: "Senior Infrastructure Engineer", en: "Senior Infrastructure Engineer" },
-      period: { es: "2021 — Presente", en: "2021 — Present" }, // TODO: confirmar fecha de inicio
+      period: { es: "Marzo 2021 — Presente", en: "March 2021 — Present" },
       location: { es: "Remoto", en: "Remote" },
       bullets: {
         es: [
@@ -73,15 +73,16 @@ const CV = {
     {
       company: "SINTyS — Sistema de Identificación Nacional Tributario y Social",
       url: "",
-      role: { es: "Administrador de bases de datos / ETL", en: "Database Administrator / ETL" },
-      period: { es: "2022 — 2023", en: "2022 — 2023" }, // TODO: confirmar fechas
-      location: { es: "Argentina", en: "Argentina" },
+      current: true,
+      role: { es: "Consultor freelance — DBA / ETL", en: "Freelance Consultant — DBA / ETL" },
+      period: { es: "2022 — Presente", en: "2022 — Present" },
+      location: { es: "Argentina · Freelance", en: "Argentina · Freelance" },
       bullets: {
         es: [
-          "Administración de bases de datos y procesos de ETL para sistemas de identificación nacional.",
+          "Consultoría en modalidad freelance: administración de bases de datos y procesos de ETL para sistemas de identificación nacional.",
         ],
         en: [
-          "Database administration and ETL processes for national identification systems.",
+          "Freelance consulting: database administration and ETL processes for national identification systems.",
         ],
       },
     },

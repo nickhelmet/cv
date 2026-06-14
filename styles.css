@@ -2,13 +2,32 @@
   --bg: #f7f8fa;
   --surface: #ffffff;
   --text: #1a2230;
+  --text-soft: #34404f;
   --muted: #5b6675;
   --accent: #2563eb;
   --accent-soft: #e8efff;
   --border: #e6e9ef;
+  --topbar-bg: rgba(255, 255, 255, 0.85);
+  --badge-fg: #0a7d3e;
+  --badge-bg: #e3f6ec;
   --radius: 12px;
   --max: 860px;
   --shadow: 0 1px 3px rgba(16, 24, 40, 0.06), 0 1px 2px rgba(16, 24, 40, 0.04);
+}
+
+[data-theme="dark"] {
+  --bg: #0e1320;
+  --surface: #171d2e;
+  --text: #e8ecf3;
+  --text-soft: #c2cad8;
+  --muted: #8b97a9;
+  --accent: #6ea8ff;
+  --accent-soft: #1e2942;
+  --border: #283449;
+  --topbar-bg: rgba(14, 19, 32, 0.85);
+  --badge-fg: #6ee7a8;
+  --badge-bg: #15301f;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 * { box-sizing: border-box; }
@@ -34,7 +53,7 @@ a:hover { text-decoration: underline; }
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(255, 255, 255, 0.85);
+  background: var(--topbar-bg);
   backdrop-filter: saturate(180%) blur(8px);
   border-bottom: 1px solid var(--border);
 }
@@ -70,6 +89,22 @@ a:hover { text-decoration: underline; }
   transition: all 0.15s;
 }
 .ghost-btn:hover { color: var(--accent); border-color: var(--accent); }
+
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  font-size: 15px;
+  line-height: 1;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text);
+  transition: all 0.15s;
+}
+.icon-btn:hover { border-color: var(--accent); }
 
 .lang-switch {
   display: inline-flex;
@@ -167,7 +202,7 @@ a:hover { text-decoration: underline; }
   padding-bottom: 8px;
   border-bottom: 1px solid var(--border);
 }
-.about-p { margin: 0 0 12px; color: #34404f; }
+.about-p { margin: 0 0 12px; color: var(--text-soft); }
 
 /* --- Experiencia / timeline --- */
 .timeline { display: flex; flex-direction: column; gap: 22px; }
@@ -198,13 +233,13 @@ a:hover { text-decoration: underline; }
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: #0a7d3e;
-  background: #e3f6ec;
+  color: var(--badge-fg);
+  background: var(--badge-bg);
   padding: 2px 8px;
   border-radius: 999px;
   vertical-align: middle;
 }
-.job-bullets { margin: 0; padding-left: 18px; color: #34404f; }
+.job-bullets { margin: 0; padding-left: 18px; color: var(--text-soft); }
 .job-bullets li { margin-bottom: 4px; }
 
 /* --- Skills --- */
@@ -245,7 +280,7 @@ a:hover { text-decoration: underline; }
 .compact-item { margin-bottom: 14px; }
 .compact-title { font-weight: 600; }
 .compact-meta { font-size: 13px; color: var(--muted); }
-.compact-detail { font-size: 13.5px; color: #34404f; margin-top: 4px; }
+.compact-detail { font-size: 13.5px; color: var(--text-soft); margin-top: 4px; }
 
 .lang-list { display: flex; flex-wrap: wrap; gap: 8px; }
 .lang-pill {
@@ -254,7 +289,7 @@ a:hover { text-decoration: underline; }
   border: 1px solid var(--border);
   border-radius: 999px;
   padding: 5px 12px;
-  color: #34404f;
+  color: var(--text-soft);
 }
 
 /* --- Footer --- */

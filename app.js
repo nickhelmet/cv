@@ -11,11 +11,14 @@ const UI = {
   certifications: { es: "Formación",       en: "Training" },
   languages:      { es: "Idiomas",         en: "Languages" },
   current:        { es: "Actual",          en: "Current" },
-  print:          { es: "Imprimir / PDF",  en: "Print / PDF" },
+  print:          { es: "Imprimir",        en: "Print" },
+  download:       { es: "Descargar PDF",   en: "Download PDF" },
+  generating:     { es: "Generando…",      en: "Generating…" },
   email:          { es: "Email",           en: "Email" },
 };
 
 const STORAGE_KEY = "cv-lang";
+const THEME_KEY = "cv-theme";
 
 // Idioma inicial: preferencia guardada > idioma del navegador > español
 function initialLang() {
@@ -26,6 +29,32 @@ function initialLang() {
 }
 
 let lang = initialLang();
+
+// Tema inicial: preferencia guardada > preferencia del sistema > claro
+function initialTheme() {
+  const saved = localStorage.getItem(THEME_KEY);
+  if (saved === "light" || saved === "dark") return saved;
+  return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+}
+
+let theme = initialTheme();
+
+function applyTheme() {
+  document.documentElement.setAttribute("data-theme", theme);
+  const btn = document.getElementById("theme-btn");
+  if (btn) {
+    btn.textContent = theme === "dark" ? "☀" : "☾";
+    btn.title = theme === "dark" ? "Tema claro" : "Tema oscuro";
+  }
+}
+
+function setTheme(next) {
+  theme = next;
+  localStorage.setItem(THEME_KEY, next);
+  applyTheme();
+}
 
 // Helpers
 const el = (tag, cls, html) => {
@@ -66,6 +95,42 @@ function render() {
     b.classList.toggle("active", b.dataset.lang === lang);
   });
   document.getElementById("print-btn").textContent = UI.print[lang];
+  document.getElementById("download-btn").textContent = UI.download[lang];
+}
+
+// Descarga el CV como PDF (forzando tema claro para impresión)
+function downloadPDF() {
+  const btn = document.getElementById("download-btn");
+  if (typeof html2pdf === "undefined") {
+    window.print(); // fallback si la librería no cargó
+    return;
+  }
+  const root = document.getElementById("cv-root");
+  const prevTheme = document.documentElement.getAttribute("data-theme");
+  const prevLabel = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = UI.generating[lang];
+  document.documentElement.setAttribute("data-theme", "light");
+
+  const restore = () => {
+    document.documentElement.setAttribute("data-theme", prevTheme || "light");
+    btn.disabled = false;
+    btn.textContent = prevLabel;
+  };
+
+  const opt = {
+    margin: [10, 10, 12, 10],
+    filename: `CV_Nicolas_Casco_${lang.toUpperCase()}.pdf`,
+    image: { type: "jpeg", quality: 0.98 },
+    html2canvas: { scale: 2, useCORS: true, backgroundColor: "#ffffff" },
+    jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+    pagebreak: { mode: ["css", "legacy"] },
+  };
+
+  // Pequeño delay para que el repintado a tema claro se aplique antes de capturar
+  setTimeout(() => {
+    html2pdf().set(opt).from(root).save().then(restore).catch(restore);
+  }, 60);
 }
 
 function linkEl(icon, label, href, sub) {
@@ -189,5 +254,10 @@ document.addEventListener("DOMContentLoaded", () => {
     b.addEventListener("click", () => setLang(b.dataset.lang));
   });
   document.getElementById("print-btn").addEventListener("click", () => window.print());
+  document.getElementById("download-btn").addEventListener("click", downloadPDF);
+  document.getElementById("theme-btn").addEventListener("click", () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  });
+  applyTheme();
   render();
 });
